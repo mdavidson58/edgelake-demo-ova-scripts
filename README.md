@@ -35,7 +35,7 @@ This starts:
 
 | Service               | Role                  | Endpoint                          |
 |-----------------------|-----------------------|-----------------------------------|
-| **GUI** (gui-1)       | Web UI                | [http://localhost:3000](http://localhost:3000) |
+| **GUI** (gui-1)       | Web UI                | [http://localhost:3001](http://localhost:3001) |
 | **Query Node REST** (edgelake-demo-query) | SQL & Fabric Query     | `localhost:32349` |
 | **Operator Node REST** (edgelake-demo-operator) | Data Ingest / Control | `localhost:32149` |
 | **Operator2 Node REST** (edgelake-demo-operator2) | Data Ingest / Control | `localhost:32159` |
