@@ -73,7 +73,7 @@ Open the GUI and insert the **IP:Port** of a Query or Operator node in the Conne
    Click **Add Data** and provide JSON-formatted input.
 
 2. **Subscribe to a MQTT broker**  
-   [MQTT Background Services](https://github.com/EdgeLake/edgelake.github.io/blob/mmain/docs/commmmands/background_services.md#subscribe-to-broker)
+   [MQTT Background Services](https://github.com/EdgeLake/edgelake.github.io/blob/main/docs/commands/background_services.md#subscribe-to-broker)
 
 3. **Insert via REST API**  
    [REST Insert Examples](https://github.com/EdgeLake/edgelake.github.io/blob/main/docs/examples/rest_examples.md#put-request)
