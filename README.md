@@ -25,7 +25,7 @@ This starts:
 
 - **gui-1** – Web UI for monitoring and data management  
 - **edgelake-demo-master** – Control plane  
-- **edgelake-demo-query** – Query node (SQL over AnyLog)  
+- **edgelake-demo-query** – Query node (SQL over Edgelake)  
 - **edgelake-demo-operator** – Data operator node  
 - **edgelake-demo-operator2** – Second data operator node  
 
@@ -36,9 +36,9 @@ This starts:
 | Service               | Role                  | Endpoint                          |
 |-----------------------|-----------------------|-----------------------------------|
 | **GUI** (gui-1)       | Web UI                | [http://localhost:3001](http://localhost:3001) |
-| **Query Node REST** (edgelake-demo-query) | SQL & Fabric Query     | `localhost:32349` |
-| **Operator Node REST** (edgelake-demo-operator) | Data Ingest / Control | `localhost:32149` |
-| **Operator2 Node REST** (edgelake-demo-operator2) | Data Ingest / Control | `localhost:32159` |
+| **Query Node REST** (edgelake-demo-query) | SQL & Fabric Query     | `vmipaddr:32349` |
+| **Operator Node REST** (edgelake-demo-operator) | Data Ingest / Control | `vmipaddr:32149` |
+| **Operator2 Node REST** (edgelake-demo-operator2) | Data Ingest / Control | `vmipaddr:32159` |
 
 <details>
 <summary>Using the GUI with a node</summary>
