@@ -43,7 +43,7 @@ This starts:
 <details>
 <summary>Using the GUI with a node</summary>
 
-Open the GUI and insert the **IP:Port** of a Query or Operator node in the Connection dialog, then click **Use**.
+Open the GUI and insert the **VM IP:Port** of a Query or Operator node in the Connection dialog, then click **Use**.
 
 </details>
 
