@@ -1,108 +1,138 @@
-# EdgeLake Demo
+---
+lang: en
+title: EdgeLake Demo -- Quick Start & Guide
+viewport: width=device-width, initial-scale=1
+---
 
-This repository provides a reproducible demo environment for
-**EdgeLake**, showcasing decentralized data orchestration at the edge
-with AnyLog components. The demo spins up a set of containers (GUI,
-Query node, Operators, and Master) and provides a quick way to explore
-federated edge-to-cloud workflows.
+::: wrap
+::: hero
+# ▶️ EdgeLake Demo -- Quick Start
 
-------------------------------------------------------------------------
+A minimal, operator‑friendly guide to launching and exploring the
+EdgeLake + AnyLog data fabric.
 
-## 🚀 Getting Started
+::: badges
+[OVA boots → containers auto‑start]{.badge} [GUI, Query, Operator
+x2]{.badge} [Local‑only endpoints]{.badge}
+:::
+:::
 
-### Prerequisites
+::: {.grid .two style="margin-top: 18px;"}
+::: {.section .card}
+## Automatic Start
 
--   Ubuntu 22.04+ (Desktop or Server)
--   [Docker](https://docs.docker.com/engine/install/) and Docker Compose
--   Git (to clone this repository)
+When the OVA boots, all required containers are launched automatically.
 
-### Clone the Repository
+::: {.callout .ok}
+No action needed for a first‑run demo.
+:::
+:::
 
-``` bash
-git clone https://github.com/<your-org>/<your-repo>.git
-cd <your-repo>
+::: {.section .card}
+## Manual Start (if needed)
+
+Launch all EdgeLake containers with:
+
+``` {#code-start}
+Copycd ~/Edgelake
+./ELstartup.sh
 ```
 
-------------------------------------------------------------------------
+This starts:
 
-## ▶️ Starting the Demo
+-   **gui-1** -- Web UI for monitoring and data management
+-   **edgelake-demo-master** -- Control plane
+-   **edgelake-demo-query** -- Query node (SQL over AnyLog)
+-   **edgelake-demo-operator** -- Data operator node
+-   **edgelake-demo-operator2** -- Second data operator node
+:::
+:::
 
-To launch all EdgeLake containers:
+::: {.section .card}
+## Service Endpoints
 
-``` bash
-./startup.sh
-```
+  Service                                                    Role                    Endpoint
+  ---------------------------------------------------------- ----------------------- --------------------------------------------------------------------------------
+  **GUI** [gui-1]{.pill}                                     Web UI                  [http://localhost:3000](http://localhost:3000){target="_blank" rel="noopener"}
+  **Query Node REST** [edgelake-demo-query]{.pill}           SQL & Fabric Query      `localhost:32349`
+  **Operator Node REST** [edgelake-demo-operator]{.pill}     Data Ingest / Control   `localhost:32149`
+  **Operator2 Node REST** [edgelake-demo-operator2]{.pill}   Data Ingest / Control   `localhost:32159`
 
-This script will: - Launch `gui-1` (UI for monitoring) - Start
-`edgelake-demo-master` (control plane) - Start `edgelake-demo-query`
-(query node) - Start `edgelake-demo-operator` and
-`edgelake-demo-operator2` (data operators)
+Using the GUI with a node
 
-Once running: - **GUI**: http://localhost:3000 (Grafana/EdgeLake
-dashboard) - **Query Node REST API**: http://localhost:32048 - **Master
-REST API**: http://localhost:32049
+Open the GUI and insert the [IP:Port]{.kbd} of a Query or Operator node
+in the Connection dialog, then click *Use*.
+:::
 
-------------------------------------------------------------------------
+::: {.grid .three}
+::: {.section .card}
+## Monitor
 
-## 🔄 Health Check Script
+Track resources and health across nodes from the GUI dashboard.
+:::
 
-If you want to ensure the demo containers are running (and restart them
-if not):
+::: {.section .card}
+## Add Data
 
-``` bash
-./check-containers.sh
-```
+Load JSON‑formatted data into an *operator* node via the GUI.
+:::
 
-This script checks for: - `gui-1` - `edgelake-demo-query` -
-`edgelake-demo-operator` - `edgelake-demo-operator2` -
-`edgelake-demmo-master`
+::: {.section .card}
+## SQL Query
 
-If any are missing, it automatically reruns `./startup.sh`.
+Build and run SQL queries from the *query* node's GUI tool.
+:::
+:::
 
-------------------------------------------------------------------------
+::: {.section .card}
+## Blockchain Manager
 
-## 📊 Exploring the Demo
+Inspect blockchain metadata that underpins the data fabric.
+:::
 
--   Log into the **GUI** to see system metrics and dashboards.
--   Use the Query node to submit SQL-like queries against federated edge
-    data.
--   Experiment with Operators to simulate distributed edge workloads.
+::: {.section .card}
+## Default Demo Dataset
 
-------------------------------------------------------------------------
+-   **Database:** `new_company`
+-   **Table:** `rand_data`
 
-## 🛑 Stopping the Demo
+::: callout
+This table is pre‑populated via a cloud MQTT feed on first launch.
+:::
+:::
 
-To stop and remove all demo containers:
+::: {.section .card}
+## Add Your Own Data
 
-``` bash
-docker compose down
-```
+1.  **Use the GUI (Operator node)**\
+    Click *Add Data* and provide JSON‑formatted input.
+2.  **Subscribe to a MQTT broker**\
+    [MQTT Background Services
+    (docs)](https://github.com/EdgeLake/edgelake.github.io/blob/mmain/docs/commmmands/background_services.md#subscribe-to-broker){target="_blank"
+    rel="noopener"}
+3.  **Insert via REST API**\
+    [REST Insert
+    Examples](https://github.com/EdgeLake/edgelake.github.io/blob/main/docs/examples/rest_examples.md#put-request){target="_blank"
+    rel="noopener"}
 
-------------------------------------------------------------------------
+::: {.callout .warn style="margin-top:10px;"}
+Tip: Ensure you target an *operator* node for data insertion and the
+*query* node for read/SQL workflows.
+:::
+:::
 
-## 🧰 Troubleshooting
+::: {.section .card}
+## Documentation
 
--   **Containers won't start**: Run `docker ps -a` to check logs.
+-   [Getting
+    Started](https://github.com/EdgeLake/edgelake.github.io/blob/main/docs/getting_started.md){target="_blank"
+    rel="noopener"}
+-   [Command
+    Reference](https://github.com/EdgeLake/edgelake.github.io/docs/commmands){target="_blank"
+    rel="noopener"} [external]{.pill}
+:::
 
--   **Ports already in use**: Ensure nothing else is bound to `3000`,
-    `32048`, or `32049`.\
-
--   **Permission denied**: Make sure your user is in the `docker` group:
-
-    ``` bash
-    sudo usermod -aG docker $USER
-    newgrp docker
-    ```
-
-------------------------------------------------------------------------
-
-## 📖 Learn More
-
--   [AnyLog Documentation](https://anylog.co)
--   [EdgeLake Overview](https://anylog.co/edgelake)
-
-------------------------------------------------------------------------
-
-## 📝 License
-
-This demo is provided for testing and educational purposes only.
+Pro tip: keep this page open on first boot. Use [Ctrl]{.kbd} + [L]{.kbd}
+to focus the address bar quickly, and [Alt]{.kbd} + [←]{.kbd} to
+navigate back.
+:::
