@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# load env vars
+set -a
+source ./ELinstall.env
+set +a
+
 export NODE_TYPE="$2"
 echo "node_type=$NODE_TYPE"
 
