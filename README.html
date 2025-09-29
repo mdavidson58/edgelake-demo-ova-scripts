@@ -168,7 +168,7 @@
 <div class="wrap">
 <header class="hero">
 <h1>▶️ EdgeLake Demo – Quick Start</h1>
-<p class="subtitle">A minimal, operator‑friendly guide to launching and exploring the EdgeLake + AnyLog data fabric.</p>
+<p class="subtitle">A minimal, operator‑friendly guide to launching and exploring the EdgeLake data fabric.</p>
 <div class="badges">
 <span class="badge">OVA boots → containers auto‑start</span>
 <span class="badge">GUI, Query, Operator x2</span>
@@ -190,7 +190,7 @@
 <ul>
 <li><strong>gui-1</strong> – Web UI for monitoring and data management</li>
 <li><strong>edgelake-demo-master</strong> – Control plane</li>
-<li><strong>edgelake-demo-query</strong> – Query node (SQL over AnyLog)</li>
+<li><strong>edgelake-demo-query</strong> – Query node (SQL over Edgelake)</li>
 <li><strong>edgelake-demo-operator</strong> – Data operator node</li>
 <li><strong>edgelake-demo-operator2</strong> – Second data operator node</li>
 </ul>
@@ -211,23 +211,23 @@
 <tr>
 <td><strong>Query Node REST</strong> <span class="pill">edgelake-demo-query</span></td>
 <td>SQL &amp; Fabric Query</td>
-<td><code>localhost:32349</code></td>
+<td><code>vmipaddr:32349</code></td>
 </tr>
 <tr>
 <td><strong>Operator Node REST</strong> <span class="pill">edgelake-demo-operator</span></td>
 <td>Data Ingest / Control</td>
-<td><code>localhost:32149</code></td>
+<td><code>vmmipaddr:32149</code></td>
 </tr>
 <tr>
 <td><strong>Operator2 Node REST</strong> <span class="pill">edgelake-demo-operator2</span></td>
 <td>Data Ingest / Control</td>
-<td><code>localhost:32159</code></td>
+<td><code>vmipaddr:32159</code></td>
 </tr>
 </tbody>
 </table>
 <details style="margin-top:12px;">
 <summary>Using the GUI with a node</summary>
-<p>Open the GUI and insert the <kbd>IP:Port</kbd> of a Query or Operator node in the Connection dialog, then click <em>Use</em>.</p>
+<p>Open the GUI and insert the <kbd>VM_IP:Port</kbd> of a Query or Operator node in the Connection dialog, then click <em>Use</em>.</p>
 </details>
 </section>
 <div class="grid three">
