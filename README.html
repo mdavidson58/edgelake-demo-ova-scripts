@@ -1,10 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EdgeLake Demo – Quick Start & Guide</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>EdgeLake Demo – Quick Start &amp; Guide</title>
+<style>
     :root {
       --bg: #0b1220;
       --panel: #0f172a;
@@ -164,143 +165,133 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <h1>▶️ EdgeLake Demo – Quick Start</h1>
-      <p class="subtitle">A minimal, operator‑friendly guide to launching and exploring the EdgeLake + AnyLog data fabric.</p>
-      <div class="badges">
-        <span class="badge">OVA boots → containers auto‑start</span>
-        <span class="badge">GUI, Query, Operator x2</span>
-        <span class="badge">Local‑only endpoints</span>
-      </div>
-    </header>
-
-    <div class="grid two" style="margin-top: 18px;">
-      <section class="card">
-        <h2>Automatic Start</h2>
-        <p>When the OVA boots, all required containers are launched automatically.</p>
-        <div class="callout ok">No action needed for a first‑run demo.</div>
-      </section>
-
-      <section class="card">
-        <h2>Manual Start (if needed)</h2>
-        <p>Launch all EdgeLake containers with:</p>
-        <pre id="code-start"><button class="copy-btn" data-target="code-start">Copy</button><code>cd ~/Edgelake
+<div class="wrap">
+<header class="hero">
+<h1>▶️ EdgeLake Demo – Quick Start</h1>
+<p class="subtitle">A minimal, operator‑friendly guide to launching and exploring the EdgeLake + AnyLog data fabric.</p>
+<div class="badges">
+<span class="badge">OVA boots → containers auto‑start</span>
+<span class="badge">GUI, Query, Operator x2</span>
+<span class="badge">Local‑only endpoints</span>
+</div>
+</header>
+<div class="grid two" style="margin-top: 18px;">
+<section class="card">
+<h2>Automatic Start</h2>
+<p>When the OVA boots, all required containers are launched automatically.</p>
+<div class="callout ok">No action needed for a first‑run demo.</div>
+</section>
+<section class="card">
+<h2>Manual Start (if needed)</h2>
+<p>Launch all EdgeLake containers with:</p>
+<pre id="code-start"><button class="copy-btn" data-target="code-start">Copy</button><code>cd ~/Edgelake
 ./ELstartup.sh</code></pre>
-        <p>This starts:</p>
-        <ul>
-          <li><strong>gui-1</strong> – Web UI for monitoring and data management</li>
-          <li><strong>edgelake-demo-master</strong> – Control plane</li>
-          <li><strong>edgelake-demo-query</strong> – Query node (SQL over AnyLog)</li>
-          <li><strong>edgelake-demo-operator</strong> – Data operator node</li>
-          <li><strong>edgelake-demo-operator2</strong> – Second data operator node</li>
-        </ul>
-      </section>
-    </div>
-
-    <section class="card">
-      <h2>Service Endpoints</h2>
-      <table>
-        <thead>
-          <tr><th>Service</th><th>Role</th><th>Endpoint</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>GUI</strong> <span class="pill">gui-1</span></td>
-            <td>Web UI</td>
-            <td><a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a></td>
-          </tr>
-          <tr>
-            <td><strong>Query Node REST</strong> <span class="pill">edgelake-demo-query</span></td>
-            <td>SQL &amp; Fabric Query</td>
-            <td><code>localhost:32349</code></td>
-          </tr>
-          <tr>
-            <td><strong>Operator Node REST</strong> <span class="pill">edgelake-demo-operator</span></td>
-            <td>Data Ingest / Control</td>
-            <td><code>localhost:32149</code></td>
-          </tr>
-          <tr>
-            <td><strong>Operator2 Node REST</strong> <span class="pill">edgelake-demo-operator2</span></td>
-            <td>Data Ingest / Control</td>
-            <td><code>localhost:32159</code></td>
-          </tr>
-        </tbody>
-      </table>
-      <details style="margin-top:12px;">
-        <summary>Using the GUI with a node</summary>
-        <p>Open the GUI and insert the <kbd>IP:Port</kbd> of a Query or Operator node in the Connection dialog, then click <em>Use</em>.</p>
-      </details>
-    </section>
-
-    <div class="grid three">
-      <section class="card">
-        <h2>Monitor</h2>
-        <p>Track resources and health across nodes from the GUI dashboard.</p>
-      </section>
-      <section class="card">
-        <h2>Add Data</h2>
-        <p>Load JSON‑formatted data into an <em>operator</em> node via the GUI.</p>
-      </section>
-      <section class="card">
-        <h2>SQL Query</h2>
-        <p>Build and run SQL queries from the <em>query</em> node’s GUI tool.</p>
-      </section>
-    </div>
-
-    <section class="card">
-      <h2>Blockchain Manager</h2>
-      <p>Inspect blockchain metadata that underpins the data fabric.</p>
-    </section>
-
-    <section class="card">
-      <h2>Default Demo Dataset</h2>
-      <ul>
-        <li><strong>Database:</strong> <code>new_company</code></li>
-        <li><strong>Table:</strong> <code>rand_data</code></li>
-      </ul>
-      <div class="callout">This table is pre‑populated via a cloud MQTT feed on first launch.</div>
-    </section>
-
-    <section class="card">
-      <h2>Add Your Own Data</h2>
-      <ol>
-        <li>
-          <strong>Use the GUI (Operator node)</strong><br>
+<p>This starts:</p>
+<ul>
+<li><strong>gui-1</strong> – Web UI for monitoring and data management</li>
+<li><strong>edgelake-demo-master</strong> – Control plane</li>
+<li><strong>edgelake-demo-query</strong> – Query node (SQL over AnyLog)</li>
+<li><strong>edgelake-demo-operator</strong> – Data operator node</li>
+<li><strong>edgelake-demo-operator2</strong> – Second data operator node</li>
+</ul>
+</section>
+</div>
+<section class="card">
+<h2>Service Endpoints</h2>
+<table>
+<thead>
+<tr><th>Service</th><th>Role</th><th>Endpoint</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GUI</strong> <span class="pill">gui-1</span></td>
+<td>Web UI</td>
+<td><a href="http://localhost:3000" rel="noopener" target="_blank">http://localhost:3000</a></td>
+</tr>
+<tr>
+<td><strong>Query Node REST</strong> <span class="pill">edgelake-demo-query</span></td>
+<td>SQL &amp; Fabric Query</td>
+<td><code>localhost:32349</code></td>
+</tr>
+<tr>
+<td><strong>Operator Node REST</strong> <span class="pill">edgelake-demo-operator</span></td>
+<td>Data Ingest / Control</td>
+<td><code>localhost:32149</code></td>
+</tr>
+<tr>
+<td><strong>Operator2 Node REST</strong> <span class="pill">edgelake-demo-operator2</span></td>
+<td>Data Ingest / Control</td>
+<td><code>localhost:32159</code></td>
+</tr>
+</tbody>
+</table>
+<details style="margin-top:12px;">
+<summary>Using the GUI with a node</summary>
+<p>Open the GUI and insert the <kbd>IP:Port</kbd> of a Query or Operator node in the Connection dialog, then click <em>Use</em>.</p>
+</details>
+</section>
+<div class="grid three">
+<section class="card">
+<h2>Monitor</h2>
+<p>Track resources and health across nodes from the GUI dashboard.</p>
+</section>
+<section class="card">
+<h2>Add Data</h2>
+<p>Load JSON‑formatted data into an <em>operator</em> node via the GUI.</p>
+</section>
+<section class="card">
+<h2>SQL Query</h2>
+<p>Build and run SQL queries from the <em>query</em> node’s GUI tool.</p>
+</section>
+</div>
+<section class="card">
+<h2>Blockchain Manager</h2>
+<p>Inspect blockchain metadata that underpins the data fabric.</p>
+</section>
+<section class="card">
+<h2>Default Demo Dataset</h2>
+<ul>
+<li><strong>Database:</strong> <code>new_company</code></li>
+<li><strong>Table:</strong> <code>rand_data</code></li>
+</ul>
+<div class="callout">This table is pre‑populated via a cloud MQTT feed on first launch.</div>
+</section>
+<section class="card">
+<h2>Add Your Own Data</h2>
+<ol>
+<li>
+<strong>Use the GUI (Operator node)</strong><br/>
           Click <em>Add Data</em> and provide JSON‑formatted input.
         </li>
-        <li style="margin-top:8px;">
-          <strong>Subscribe to a MQTT broker</strong><br>
-          <a href="https://github.com/EdgeLake/edgelake.github.io/blob/mmain/docs/commmmands/background_services.md#subscribe-to-broker" target="_blank" rel="noopener">
+<li style="margin-top:8px;">
+<strong>Subscribe to a MQTT broker</strong><br/>
+<a href="https://github.com/EdgeLake/edgelake.github.io/blob/mmain/docs/commmmands/background_services.md#subscribe-to-broker" rel="noopener" target="_blank">
             MQTT Background Services (docs)
           </a>
-        </li>
-        <li style="margin-top:8px;">
-          <strong>Insert via REST API</strong><br>
-          <a href="https://github.com/EdgeLake/edgelake.github.io/blob/main/docs/examples/rest_examples.md#put-request" target="_blank" rel="noopener">
+</li>
+<li style="margin-top:8px;">
+<strong>Insert via REST API</strong><br/>
+<a href="https://github.com/EdgeLake/edgelake.github.io/blob/main/docs/examples/rest_examples.md#put-request" rel="noopener" target="_blank">
             REST Insert Examples
           </a>
-        </li>
-      </ol>
-      <div class="callout warn" style="margin-top:10px;">
+</li>
+</ol>
+<div class="callout warn" style="margin-top:10px;">
         Tip: Ensure you target an <em>operator</em> node for data insertion and the <em>query</em> node for read/SQL workflows.
       </div>
-    </section>
-
-    <section class="card">
-      <h2>Documentation</h2>
-      <ul>
-        <li><a href="https://github.com/EdgeLake/edgelake.github.io/blob/main/docs/getting_started.md" target="_blank" rel="noopener">Getting Started</a></li>
-        <li><a href="https://github.com/EdgeLake/edgelake.github.io/docs/commmands" target="_blank" rel="noopener">Command Reference</a> <span class="pill">external</span></li>
-      </ul>
-    </section>
-
-    <p class="footer">
+</section>
+<section class="card">
+<h2>Documentation</h2>
+<ul>
+<li><a href="https://github.com/EdgeLake/edgelake.github.io/blob/main/docs/getting_started.md" rel="noopener" target="_blank">Getting Started</a></li>
+<li><a href="https://github.com/EdgeLake/edgelake.github.io/docs/commmands" rel="noopener" target="_blank">Command Reference</a> <span class="pill">external</span></li>
+</ul>
+</section>
+<p class="footer">
       Pro tip: keep this page open on first boot. Use <kbd>Ctrl</kbd> + <kbd>L</kbd> to focus the address bar quickly, and <kbd>Alt</kbd> + <kbd>←</kbd> to navigate back.
     </p>
-  </div>
-
-  <script>
+<section class="card"><h2>Credentials</h2><p>Default demo user credentials (change after first login):</p><ul><li><strong>Username:</strong> edgelake</li><li><strong>Password:</strong> edgelake</li></ul><div class="callout warn">Security note: The default password is 'edgelake'. For production or networked demos, change it immediately.</div></section></div>
+<script>
     // Copy-to-clipboard buttons for pre blocks
     document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', () => {
