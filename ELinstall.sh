@@ -122,7 +122,8 @@ do_install() {
       
       make up EDGELAKE_TYPE="${NODE_TYPE}"
       # run remote gui
-      docker run -it   -p 8000:8000 -p 3001:3001   --name gui-1   --restart unless-stopped   -e REACT_APP_API_URL=http://localhost:8000   anylogco/remote-gui:beta &
+      IP_ADDR=$(ip -4 addr show "$NIC_TYPE" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+      docker run    -p 8000:8000 -p 3001:3001   --name gui-1   --restart unless-stopped   -e REACT_APP_API_URL=http://"$IP_ADDR":8000   anylogco/remote-gui:beta
       ;;
 
   *)
@@ -136,8 +137,6 @@ do_install() {
 }
 
 do_uninstall () {
-  #cachengo-cli updateInstallStatus $APPID "Uninstalling"
-
   cd ./${NODE_TYPE}/docker-compose
 
   case "$NODE_TYPE" in
@@ -162,7 +161,6 @@ do_uninstall () {
 
   esac
     
-  #cachengo-cli updateInstallStatus $APPID "Uninstalled"
 }
 
 case "$1" in
