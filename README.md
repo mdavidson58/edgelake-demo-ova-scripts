@@ -23,7 +23,8 @@ cd ~/Edgelake
 
 This starts:
 
-- **gui-1** – Web UI for monitoring and data management  
+- **gui-1** – Web UI for monitoring and data management
+- **grafana** - Sample Grafana Dashboard
 - **edgelake-demo-master** – Control plane  
 - **edgelake-demo-query** – Query node (SQL over Edgelake)  
 - **edgelake-demo-operator** – Data operator node  
@@ -36,6 +37,7 @@ This starts:
 | Service               | Role                  | Endpoint                          |
 |-----------------------|-----------------------|-----------------------------------|
 | **GUI** (gui-1)       | Web UI                | [http://localhost:3001](http://localhost:3001) |
+| **Sample Dashboard** (grafana)       | Sample Dashboard                | [http://localhost:3000](http://localhost:300) |
 | **Query Node REST** (edgelake-demo-query) | SQL & Fabric Query     | `vmipaddr:32349` |
 | **Operator Node REST** (edgelake-demo-operator) | Data Ingest / Control | `vmipaddr:32149` |
 | **Operator2 Node REST** (edgelake-demo-operator2) | Data Ingest / Control | `vmipaddr:32159` |
