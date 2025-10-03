@@ -1,4 +1,7 @@
 #!/bin/bash
+set -a 
+source ~/Edgelake/ELinstall.env
+set +a
 cd ~/Edgelake/master/docker-compose
 make up EDGELAKE_TYPE=master
 cd ~/Edgelake/operator/docker-compose
