@@ -6,10 +6,6 @@ source ./ELinstall.env
 set +a
 IP_ADDR=$(ip -4 addr show "$NIC_TYPE" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
-export NODE_TYPE="$2"
-echo "node_type=$NODE_TYPE"
-
-
 # Cross-platform in-place sed (GNU/BSD)
 sedi() { # usage: sedi 's|^KEY=.*$|KEY=VALUE|' file
   if sed --version &>/dev/null; then sed -i "$1" "$2"; else sed -i '' "$1" "$2"; fi
@@ -73,7 +69,10 @@ template(name="MyCustomTemplate" type="string" string="<%PRI%>%TIMESTAMP% %HOSTN
 *.* action(type="omfwd" target="${IP_ADDR}" port="32150" protocol="tcp" template="MyCustomTemplate")
 EOF
   systemctl restart rsyslog
-      
+
+for NODE_TYPE in master query operator operator2; do
+  echo "Installing node: $NODE_TYPE"
+  
   case "$NODE_TYPE" in
   master)
       ENV="docker-makefiles/edgelake_master.env"
@@ -150,18 +149,21 @@ EOF
       ;;
 
   *)
-      echo "ERROR: Unknown NODE_TYPE '$NODE_TYPE' (expected 'master', 'query' or \ 'operator')." >&2
+      echo "ERROR: Unknown NODE_TYPE '$NODE_TYPE' (expected 'master', 'query' or \ 'operator[2]')." >&2
       exit 1
       ;;
   esac
 
   echo "Updated $ENV for NODE_TYPE=$NODE_TYPE"
- 
+  done
 }
 
 do_uninstall () {
   cd ./${NODE_TYPE}/docker-compose
 
+for NODE_TYPE in master query operator operator2; do
+  echo "Removing node: $NODE_TYPE"
+  
   case "$NODE_TYPE" in
   master)
     make clean EDGELAKE_TYPE="${NODE_TYPE}"
@@ -175,15 +177,17 @@ do_uninstall () {
     make clean EDGELAKE_TYPE="${NODE_TYPE}"
     docker kill gui-1
     docker rm gui-1
+    docker kill grafana
+    docker rm grafana
   ;;
 
   *)
-    echo "ERROR: Unknown NODE_TYPE '$NODE_TYPE' (expected 'master', 'query' or \ 'operator')." >&2
+    echo "ERROR: Unknown NODE_TYPE '$NODE_TYPE' (expected 'master', 'query' or \ 'operator[2]')." >&2
     exit 1
   ;;
 
   esac
-    
+  done  
 }
 
 case "$1" in
