@@ -25,8 +25,9 @@ ensure_kv() { # KEY VALUE FILE
 do_install() {
   set -e
 
-# If docker, docker-compose and make are already installed via APT or another method, you can skip this step.
-  sudo apt-get -y install docker-compose make gettext rsyslog
+# If docker, docker-compose and make are already installed via APT or another method, you can skip this step.\
+  snap install docker
+  sudo apt-get -y install make gettext rsyslog
 
 # start syslog
   sudo systemctl enable rsyslog
