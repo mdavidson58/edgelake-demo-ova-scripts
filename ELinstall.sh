@@ -65,11 +65,11 @@ do_install() {
   h="$(hostname)"
   
   # forward syslog to anylog
-  tee /etc/rsyslog.d/60-custom-forwarding.conf > /dev/null <<EOF
+  sudo tee /etc/rsyslog.d/60-custom-forwarding.conf > /dev/null <<EOF
 template(name="MyCustomTemplate" type="string" string="<%PRI%>%TIMESTAMP% %HOSTNAME% %syslogtag% %msg%\\n")
 *.* action(type="omfwd" target="${IP_ADDR}" port="32150" protocol="tcp" template="MyCustomTemplate")
 EOF
-  systemctl restart rsyslog
+  sudo systemctl restart rsyslog
 
 for NODE_TYPE in master query operator operator2; do
   echo "Installing node: $NODE_TYPE"
