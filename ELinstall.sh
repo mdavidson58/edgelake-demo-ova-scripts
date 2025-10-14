@@ -40,8 +40,8 @@ do_install() {
 #  newgrp docker
 
 #  Install node
-  mkdir -p ./${NODE_TYPE}
-  cd ./${NODE_TYPE}
+  mkdir -p node
+  cd ./node
   git clone https://github.com/edgelake/docker-compose
   cd docker-compose
 
@@ -76,14 +76,15 @@ for NODE_TYPE in master query operator operator2; do
   
   case "$NODE_TYPE" in
   master)
-      ENV="docker-makefiles/edgelake_master.env"
+      ENV="docker-makefiles/master/base_configs.env"
+      AENV="docker-makefiles/master/advance_configs.env
       ensure_kv "NODE_NAME"     "${h}-master"            "$ENV"
       ensure_kv "COMPANY_NAME"  "${COMPANY_NAME}"        "$ENV"
       ensure_kv "LEDGER_CONN"   "${LEDGER_CONN}"         "$ENV"
       ensure_kv "TCP_BIND"      "${TCP_BIND}"            "$ENV"
       ensure_kv "REST_BIND"     "false"                  "$ENV"
       ensure_kv "BROKER_BIND"   "false"                  "$ENV"
-      ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$ENV"
+      ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$AENV"
       ensure_kv "MONITOR_NODES" "true"                   "$ENV"
       ensure_kv "STORE_MONITORING" "true"                "$ENV"
       
@@ -91,14 +92,15 @@ for NODE_TYPE in master query operator operator2; do
       ;;
 
   operator)
-      ENV="docker-makefiles/edgelake_operator.env"
+      ENV="docker-makefiles/operator/base_configs.env"
+      AENV="docker-makefiles/operator/advance_configs.env
       ensure_kv "NODE_NAME"     "${h}-operator"          "$ENV"
       ensure_kv "COMPANY_NAME"  "${COMPANY_NAME}"        "$ENV"
       ensure_kv "LEDGER_CONN"   "${LEDGER_CONN}"         "$ENV"
       ensure_kv "TCP_BIND"      "${TCP_BIND}"            "$ENV"
       ensure_kv "REST_BIND"     "false"                  "$ENV"
       ensure_kv "BROKER_BIND"   "false"                  "$ENV"
-      ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$ENV"
+      ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$AENV"
       ensure_kv "CLUSTER_NAME"  "${h}-operator-cluster"  "$ENV"
       ensure_kv "ENABLE_MQTT"   "true"                   "$ENV"
       ensure_kv "MQTT_BROKER"   "172.104.228.251"        "$ENV"
@@ -111,14 +113,19 @@ for NODE_TYPE in master query operator operator2; do
       ;;
 
   operator2)
-      ENV="docker-makefiles/edgelake_operator2.env"
+      cp -r docker-makefiles/operator docker-makefiles/operator2
+      ENV="docker-makefiles/operator2/base_configs.env"
+      AENV="docker-makefiles/operator2/advance_configs.env
       ensure_kv "NODE_NAME"     "${h}-operator2"         "$ENV"
       ensure_kv "COMPANY_NAME"  "${COMPANY_NAME}"        "$ENV"
       ensure_kv "LEDGER_CONN"   "${LEDGER_CONN}"         "$ENV"
       ensure_kv "TCP_BIND"      "${TCP_BIND}"            "$ENV"
       ensure_kv "REST_BIND"     "false"                  "$ENV"
       ensure_kv "BROKER_BIND"   "false"                  "$ENV"
-      ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$ENV"
+      ensure_kv "ANYLOG_SERVER_PORT" "32158"             "$ENV"
+      ensure_kv "ANYLOG_REST_PORT"   "32159"             "$ENV"
+      ensure_kv "ANYLOG_BROKER_PORT" "32160"             "$ENV"
+      ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$AENV"
       ensure_kv "CLUSTER_NAME"  "${h}-operator2-cluster" "$ENV"
       ensure_kv "ENABLE_MQTT"   "true"                   "$ENV"
       ensure_kv "MQTT_BROKER"   "172.104.228.251"        "$ENV"
@@ -130,14 +137,15 @@ for NODE_TYPE in master query operator operator2; do
       ;;
      
   query)
-      ENV="docker-makefiles/edgelake_query.env"
+      ENV="docker-makefiles/operator2/base_configs.env"
+      AENV="docker-makefiles/operator2/advance_configs.env
       ensure_kv "NODE_NAME"     "${h}-query"             "$ENV"
       ensure_kv "COMPANY_NAME"  "${COMPANY_NAME}"        "$ENV"
       ensure_kv "LEDGER_CONN"   "${LEDGER_CONN}"         "$ENV"
       ensure_kv "TCP_BIND"      "${TCP_BIND}"            "$ENV"
       ensure_kv "REST_BIND"     "false"                  "$ENV"
       ensure_kv "BROKER_BIND"   "false"                  "$ENV"
-      ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$ENV"
+      ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$AENV"
       ensure_kv "REMOTE_CLI"    "true"                   "$ENV"
       ensure_kv "MONITOR_NODES" "true"                   "$ENV"
       ensure_kv "STORE_MONITORING" "true"                "$ENV"
