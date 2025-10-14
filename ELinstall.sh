@@ -77,7 +77,7 @@ for NODE_TYPE in master query operator operator2; do
   case "$NODE_TYPE" in
   master)
       ENV="docker-makefiles/master-configs/base_configs.env"
-      AENV="docker-makefiles/master-configs/advance_configs.env
+      AENV="docker-makefiles/master-configs/advance_configs.env"
       ensure_kv "NODE_NAME"     "${h}-master"            "$ENV"
       ensure_kv "COMPANY_NAME"  "${COMPANY_NAME}"        "$ENV"
       ensure_kv "LEDGER_CONN"   "${LEDGER_CONN}"         "$ENV"
@@ -93,7 +93,7 @@ for NODE_TYPE in master query operator operator2; do
 
   operator)
       ENV="docker-makefiles/operator-configs/base_configs.env"
-      AENV="docker-makefiles/operator-configs/advance_configs.env
+      AENV="docker-makefiles/operator-configs/advance_configs.env"
       ensure_kv "NODE_NAME"     "${h}-operator"          "$ENV"
       ensure_kv "COMPANY_NAME"  "${COMPANY_NAME}"        "$ENV"
       ensure_kv "LEDGER_CONN"   "${LEDGER_CONN}"         "$ENV"
@@ -115,7 +115,7 @@ for NODE_TYPE in master query operator operator2; do
   operator2)
       cp -r docker-makefiles/operator docker-makefiles/operator2
       ENV="docker-makefiles/operator2-configs/base_configs.env"
-      AENV="docker-makefiles/operator2-configs/advance_configs.env
+      AENV="docker-makefiles/operator2-configs/advance_configs.env"
       ensure_kv "NODE_NAME"     "${h}-operator2"         "$ENV"
       ensure_kv "COMPANY_NAME"  "${COMPANY_NAME}"        "$ENV"
       ensure_kv "LEDGER_CONN"   "${LEDGER_CONN}"         "$ENV"
@@ -138,7 +138,7 @@ for NODE_TYPE in master query operator operator2; do
      
   query)
       ENV="docker-makefiles/query-configs/base_configs.env"
-      AENV="docker-makefiles/query-configs/advance_configs.env
+      AENV="docker-makefiles/query-configs/advance_configs.env"
       ensure_kv "NODE_NAME"     "${h}-query"             "$ENV"
       ensure_kv "COMPANY_NAME"  "${COMPANY_NAME}"        "$ENV"
       ensure_kv "LEDGER_CONN"   "${LEDGER_CONN}"         "$ENV"
