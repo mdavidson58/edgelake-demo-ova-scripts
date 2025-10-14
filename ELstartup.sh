@@ -1,7 +1,7 @@
 
 #!/bin/bash
 # Start Edgelake Services
-cd ~/Edgelake/master/docker-compose
+cd ~/Edgelake/node/docker-compose
 make up EDGELAKE_TYPE=master
 cd ~/Edgelake/operator/docker-compose
 make up EDGELAKE_TYPE=operator
