@@ -113,7 +113,7 @@ for NODE_TYPE in master query operator operator2; do
       ;;
 
   operator2)
-      cp -r docker-makefiles/operator docker-makefiles/operator2
+      cp -r docker-makefiles/operator-configs docker-makefiles/operator2-configs
       ENV="docker-makefiles/operator2-configs/base_configs.env"
       AENV="docker-makefiles/operator2-configs/advance_configs.env"
       ensure_kv "NODE_NAME"     "${h}-operator2"         "$ENV"
