@@ -125,7 +125,6 @@ for NODE_TYPE in master query operator operator2; do
       ensure_kv "BROKER_BIND"   "false"                  "$ENV"
       ensure_kv "ANYLOG_SERVER_PORT" "32158"             "$ENV"
       ensure_kv "ANYLOG_REST_PORT"   "32159"             "$ENV"
-      ensure_kv "ANYLOG_BROKER_PORT" "32160"             "$ENV"
       ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$AENV"
       ensure_kv "CLUSTER_NAME"  "${h}-operator2-cluster" "$ENV"
       ensure_kv "ENABLE_MQTT"   "true"                   "$ENV"
