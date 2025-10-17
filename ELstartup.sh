@@ -3,11 +3,8 @@
 # Start Edgelake Services
 cd ~/Edgelake/node/docker-compose
 make up EDGELAKE_TYPE=master
-cd ~/Edgelake/operator/docker-compose
 make up EDGELAKE_TYPE=operator
-cd ~/Edgelake/operator2/docker-compose
 make up EDGELAKE_TYPE=operator2
-cd ~/Edgelake/query/docker-compose
 make up EDGELAKE_TYPE=query
 
 # Load env variables
