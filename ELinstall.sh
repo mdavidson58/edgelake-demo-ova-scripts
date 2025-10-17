@@ -40,8 +40,8 @@ do_install() {
 #  newgrp docker
 
 #  Install node
-  mkdir -p node
-  cd ./node
+  mkdir -p ~/Edgelake/node
+  cd ~/Edgelake/node
   git clone https://github.com/edgelake/docker-compose
   cd docker-compose
 
@@ -100,6 +100,7 @@ for NODE_TYPE in master query operator operator2; do
       ensure_kv "TCP_BIND"      "${TCP_BIND}"            "$ENV"
       ensure_kv "REST_BIND"     "false"                  "$ENV"
       ensure_kv "BROKER_BIND"   "false"                  "$ENV"
+      ensure_kv "ANYLOG_BROKER_PORT" "32150"             "$ENV"
       ensure_kv "NIC_TYPE"      "${NIC_TYPE}"            "$AENV"
       ensure_kv "CLUSTER_NAME"  "${h}-operator-cluster"  "$ENV"
       ensure_kv "ENABLE_MQTT"   "true"                   "$ENV"
@@ -168,7 +169,7 @@ for NODE_TYPE in master query operator operator2; do
 }
 
 do_uninstall () {
-  cd ./${NODE_TYPE}/docker-compose
+  cd ~/Edgelake/node/docker-compose
 
 for NODE_TYPE in master query operator operator2; do
   echo "Removing node: $NODE_TYPE"
