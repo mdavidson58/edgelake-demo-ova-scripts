@@ -187,8 +187,11 @@ for NODE_TYPE in master query operator operator2; do
     make clean EDGELAKE_TYPE="${NODE_TYPE}"
     docker kill gui-1
     docker rm gui-1
+    docker rmi anylogco/remote-gui:beta      
     docker kill grafana
     docker rm grafana
+    docker rmi anylogco/oh-grafana:latest
+
   ;;
 
   *)
