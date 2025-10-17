@@ -198,7 +198,10 @@ for NODE_TYPE in master query operator operator2; do
     ;;
 
   esac
-  done  
+done  
+
+sudo rm -r ~/Edgelake/node
+
 }
 
 case "$1" in
