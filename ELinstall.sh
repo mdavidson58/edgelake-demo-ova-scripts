@@ -109,7 +109,6 @@ for NODE_TYPE in master query operator operator2; do
       ensure_kv "STORE_MONITORING" "true"                "$ENV"
       ensure_kv "SYSLOG_MONITORING" "true"               "$ENV"
 
-     
       make up EDGELAKE_TYPE="${NODE_TYPE}"
       ;;
 
@@ -163,12 +162,13 @@ for NODE_TYPE in master query operator operator2; do
       ;;
   esac
 
-  echo "Updated $ENV for NODE_TYPE=$NODE_TYPE"
+  echo "Node up for NODE_TYPE=$NODE_TYPE"
   done
 }
 
 do_uninstall () {
-  cd ~/Edgelake/node/docker-compose
+
+cd ~/Edgelake/node/docker-compose
 
 for NODE_TYPE in master query operator operator2; do
   echo "Removing node: $NODE_TYPE"
@@ -190,13 +190,12 @@ for NODE_TYPE in master query operator operator2; do
     docker kill grafana
     docker rm grafana
     docker rmi anylogco/oh-grafana:latest
-
-  ;;
+    ;;
 
   *)
     echo "ERROR: Unknown NODE_TYPE '$NODE_TYPE' (expected 'master', 'query' or \ 'operator[2]')." >&2
     exit 1
-  ;;
+    ;;
 
   esac
   done  
