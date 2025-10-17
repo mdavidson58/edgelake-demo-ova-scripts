@@ -206,4 +206,9 @@ for NODE_TYPE in master query operator operator2; do
 case "$1" in
   install) do_install ;;
   uninstall) do_uninstall ;;
+  *)
+    echo "ERROR: Excpected '$0' [install,uninstall]" >&2
+    exit 1
+    ;;
+
 esac
